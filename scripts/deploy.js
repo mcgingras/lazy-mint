@@ -16,7 +16,7 @@ async function main() {
 
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
-    const C = await ethers.getContractFactory("Cryptography");
+    const C = await ethers.getContractFactory("Lazy");
     const c = await C.deploy();
     await c.deployed();
 
@@ -27,7 +27,7 @@ async function main() {
 
   function saveFrontendFiles(c) {
     const fs = require("fs");
-    const contractsDir = __dirname + "/artifacts";
+    const contractsDir = __dirname + "/compiled";
 
     if (!fs.existsSync(contractsDir)) {
       fs.mkdirSync(contractsDir);
@@ -35,14 +35,14 @@ async function main() {
 
     fs.writeFileSync(
       contractsDir + "/contract-address.json",
-      JSON.stringify({ Cryptography: c.address }, undefined, 2)
+      JSON.stringify({ Lazy: c.address }, undefined, 2)
     );
 
-    const CryptographyArtifact = artifacts.readArtifactSync("Cryptography");
+    const LazyArtifact = artifacts.readArtifactSync("Lazy");
 
     fs.writeFileSync(
-      contractsDir + "/Cryptography.json",
-      JSON.stringify(CryptographyArtifact, null, 2)
+      contractsDir + "/Lazy.json",
+      JSON.stringify(LazyArtifact, null, 2)
     );
   }
 

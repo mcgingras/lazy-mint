@@ -1,13 +1,13 @@
 const hre = require("hardhat");
-const CryptographyArtifact = require("./compiled/Cryptography.json");
-const contractAddress = require("./compiled/contract-address.json");
+const LazyArtifact = require("../compiled/Lazy.json");
+const contractAddress = require("../compiled/contract-address.json");
 
 async function main() {
     const [owner, addr1, ...addrs] = await ethers.getSigners();
 
     const contract = new ethers.Contract(
-        contractAddress.Cryptography,
-        CryptographyArtifact.abi,
+        contractAddress.Lazy,
+        LazyArtifact.abi,
         owner
     );
 
