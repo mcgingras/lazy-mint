@@ -1,4 +1,4 @@
-# Signature Verified Function Params
+# Lazy Minting NFTs
 See `test/test.js` for example and comments.
 
 _this isn't actually super hack resistent_
